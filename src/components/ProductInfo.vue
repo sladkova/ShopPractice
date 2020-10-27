@@ -1,13 +1,13 @@
 <template>
     <div>
         <h2 v-if="product">
-            This is page for product #{{ product.id }}: {{ product.item }}
+            This is page for product #{{ product.id }}: {{ product.title }}
         </h2>
         <h2 v-else>
             Product not found
         </h2>
         <div>
-            <button v-on:click="addItem(index)" class="btn">Add to cart</button>  
+            <button @click="addToCart(product)" class="btn">Add to cart</button>
         </div>
     </div>
 </template>
@@ -24,6 +24,12 @@
             this.product = products.find((item) => {
                 return (item.id === Number(this.$route.params.id));
             });
+        },
+        computed:{
+            addToCart(product){
+                this.$store.commit('addToCart',product)
+            }
+        }
         }
     }
 </script>

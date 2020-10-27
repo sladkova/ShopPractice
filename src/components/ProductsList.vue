@@ -3,6 +3,7 @@
         <form class="searchbar">
             <input placeholder="Пошук" v-model="search">
             <input type="submit"  class="btn">
+           <router-link :to="'/cart'"><button class="btn">Cart</button></router-link>
         </form>
         <div class="product" v-for="(item) in filteredItems" v-bind:key="item.id">
             <div class="product-image">
@@ -11,11 +12,11 @@
             <div>
                 <h4 class="product-title">
                     <router-link v-bind:to="'/product/' + item.id">
-                        {{ item.item }}
+                        {{ item.title }}
                     </router-link>
                 </h4>
                 <label>{{item.price}}</label>
-                <button class="btn">Add to cart</button>  
+                <button @click="addToCart(item)" class="btn">Add to cart</button>  
             </div>
         </div>
     </div>
@@ -44,6 +45,11 @@
                     return element.item.toUpperCase().includes(this.search.toUpperCase());
                 });
             },
+        },
+        methods:{
+        addToCart(item){
+                this.$store.commit('addToCart',item)
+            }
         }
     }
 </script>
