@@ -8,7 +8,7 @@ const store = new Vuex.Store({
     plugins: [createPersisteadState()],
     state: {
         cart: [],
-        cartCount = 0,
+        cartCount: 0,
     },
     mutations: {
         addToCart: (state,item) => {

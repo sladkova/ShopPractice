@@ -30,6 +30,5 @@
                 this.$store.commit('addToCart',product)
             }
         }
-        }
     }
 </script>

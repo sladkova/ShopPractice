@@ -2,8 +2,8 @@
     <div>
         <template v-if="$store.state.cart.length > 0">
             <div v-for="item in $store.state.cart" :key="item.id">
-                <div class="product-image"><img v-bind:src="item.src"></div>
                 <p>{{ item.title }} x{{ item.quantity }} - ${{ item.totalPrice }}</p>
+                <img  class="product-image" v-bind:src="item.src">
             </div>
             <p> Итого: ${{ totalPrice }} </p>
         </template>
