@@ -23,6 +23,8 @@
 </template>
 <script>
     import products from '../data/products.js'
+    import Vue from 'vue'
+
 
     export default {
         data: function () {
@@ -33,8 +35,15 @@
             };
         },
         mounted: function(){
+              console.log(products);
             this.items = products;
         },
+        // mounted: function() {
+        //     Vue.axios.get("http://localhost:3000/users").then((response) => {
+        //         console.log(response.data)
+        //         this.items = response.data;
+        //     })
+        // },
         computed: {
             filteredItems: function() {
                 console.log(this);
@@ -47,9 +56,9 @@
             },
         },
         methods:{
-        addToCart(item){
-                this.$store.commit('addToCart',item)
-            }
+            addToCart(item){
+                    this.$store.commit('addToCart',item)
+                }
         }
     }
 </script>
